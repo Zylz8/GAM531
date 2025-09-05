@@ -43,10 +43,10 @@ namespace WindowEngine
             // Define a simple triangle in normalized device coordinates (NDC)
             float[] vertices = new float[]
             {
-                -0.5f, -0.5f, 0.0f,  // Bottom-left
-                 0.5f, -0.5f, 0.0f,  // Bottom-right
-                -0.5f,  0.5f, 0.0f,  // Top-left
-                 0.5f,  0.5f, 0.0f   // Top-right
+                -0.2f, -0.3f, 0.0f,  // Bottom-left
+                 0.0f, -0.3f, 0.0f,  // Bottom-right
+                -0.2f,  0.0f, 0.0f,  // Top-left
+                 0.0f,  0.0f, 0.0f   // Top-right
             };
 
             // Generate a Vertex Buffer Object (VBO) to store vertex data on GPU
