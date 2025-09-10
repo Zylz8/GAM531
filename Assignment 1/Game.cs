@@ -38,15 +38,20 @@ namespace WindowEngine
             base.OnLoad();
 
             // Set the background color (RGBA)
-            GL.ClearColor(new Color4(0.5f, 0.7f, 0.8f, 1f));
+            GL.ClearColor(new Color4(0.2f, 0.7f, 0.2f, 1f));
 
             // Define a simple triangle in normalized device coordinates (NDC)
             float[] vertices = new float[]
             {
-                -0.2f, -0.3f, 0.0f,  // Bottom-left
-                 0.0f, -0.3f, 0.0f,  // Bottom-right
-                -0.2f,  0.0f, 0.0f,  // Top-left
-                 0.0f,  0.0f, 0.0f   // Top-right
+                // Triangle 1
+                0.5f,  0.5f, 0.0f,   // Top vertex
+               -0.5f, -0.5f, 0.0f,   // Bottom-left vertex
+                0.5f, -0.5f, 0.0f,    // Bottom-right vertex
+
+                // Triangle 2
+                0.5f, 0.5f, 0.0f, // Top Right
+                -0.5f, 0.5f, 0.0f, // Top Left
+                -0.5f, -0.5f, 0.0f // Bottom Right
             };
 
             // Generate a Vertex Buffer Object (VBO) to store vertex data on GPU
@@ -84,7 +89,7 @@ namespace WindowEngine
 
                 void main()
                 {
-                    FragColor = vec4(0.6f, 0.2f, 0.8f, 1.0f); // Orange-red color
+                    FragColor = vec4(1.0f, 0.2f, 0.1f, 1.0f); // Orange-red color
                 }
             ";
 
@@ -132,7 +137,7 @@ namespace WindowEngine
 
             // Bind the VAO and draw the triangle
             GL.BindVertexArray(vertexArrayHandle);
-            GL.DrawArrays(PrimitiveType.TriangleStrip, 0, 4);
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 6);
             GL.BindVertexArray(0);
 
             // Display the rendered frame
