@@ -4,5 +4,4 @@ All my work will be posted in this repository
 
 # Week 3 - Rendering Pipelines
 
-- Core of all graphics engines
-- 
+- For the test - The 6 Main stages. 
