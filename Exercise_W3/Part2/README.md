@@ -4,3 +4,5 @@
 - Explain how indices avoid repetition
 
 Indices avoid repetition because without using indices/EBO you would need 6 vertices for 2 triangles basically duplicating the triangles vertices. But by using EBO you only need 4 unique vertices and you tell OpenGL how to connect the vertices.
+
+<img width="507" height="450" alt="image" src="https://github.com/user-attachments/assets/22e19a1b-3ade-44a3-9037-b93282059528" />
