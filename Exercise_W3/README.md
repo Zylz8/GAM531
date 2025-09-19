@@ -1,7 +1,7 @@
 # **Group Members**
-- **Jackey Zhou / jzhou200**
-- **Aaron Ngo / ango24** 
-- **Huy Hoang Huynh / hhhuynh2** 
+- **Jackey Zhou / jzhou200@myseneca.ca**
+- **Aaron Ngo / ango24@myseneca.ca** 
+- **Huy Hoang Huynh / hhhuynh2@myseneca.ca** 
 
 # **Render a Colored Square (Two Triangles)**
 - Define 6 vertices.
