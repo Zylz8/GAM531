@@ -1,3 +1,8 @@
+# **Group Members**
+- **Jackey Zhou / jzhou200**
+- **Aaron Ngo / ango24** 
+- **Huy Hoang Huynh / hhhuynh2** 
+
 # **Render a Colored Square (Two Triangles)**
 - Define 6 vertices.
 - Add color to each vertex.
