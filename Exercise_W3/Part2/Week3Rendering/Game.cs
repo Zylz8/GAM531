@@ -52,7 +52,7 @@ namespace WindowEngine
                 0.5f,  0.5f, 0f,   1f, 1f, 0f  // top-right, yellow
             };
 
-            uint[] indices = new uint[]
+            int[] indices = new int[]
             {
                 0, 1, 2, // first triangle (top-left, bottom-left, bottom-right)
                 0, 2, 3  // second triangle (top-left, bottom-right, top-right)
