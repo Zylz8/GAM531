@@ -33,4 +33,12 @@ I used the vertex shader to apply the color and position. I used the fragment sh
 
 For the transformations I used the model matrix which is used to rotate the cube over time. The view matrix places where the camera is looking at the cube. The projection matrix makes the perspective of the 3D cube.
 
+# How to Run the Project
+
+1. Clone or download the repository to your computer
+2. Open the solution in Visual Studio
+3. Make sure you have OpenTK NuGet package dependencies installed
+4. Build the project (dotnet build)
+5. Run the program (dotnet run)
+
 
