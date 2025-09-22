@@ -162,7 +162,8 @@ namespace WindowEngine
             int projLoc = GL.GetUniformLocation(shaderProgramHandle, "uProjection");
 
             float angle = (float)DateTime.Now.TimeOfDay.TotalSeconds;
-            Matrix4 model = Matrix4.CreateRotationX(angle) * Matrix4.CreateRotationY(angle * 0.5f); // rotate
+            Matrix4 model = Matrix4.CreateRotationX(angle) * Matrix4.CreateRotationY(angle * 0.5f); // rotate cube around X axis and rotates the cube aroud the Y axis at half the speed
+            // Rotates around both the X and Y axis
 
             Matrix4 view = Matrix4.LookAt(new Vector3(1.5f, 1.5f, 2f), Vector3.Zero, Vector3.UnitY); // view matrix (camera looking a origin)
             Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), Size.X / (float)Size.Y, 0.1f, 100f); // projection matrix(perspective)
