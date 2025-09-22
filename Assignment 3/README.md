@@ -5,7 +5,8 @@
 
 # **Deliverables**
 - Source Code + Screenshot
-<img width="624" height="514" alt="Screenshot 2025-09-22 135854" src="https://github.com/user-attachments/assets/4a132b5b-5b3b-42f0-8287-f829aee34f78" />
+<img width="623" height="461" alt="Screenshot 2025-09-22 142151" src="https://github.com/user-attachments/assets/3936a3ee-9c78-45da-8e0c-2900a95807be" />
+
 
 I used OpenTK library for this assignment.
 
