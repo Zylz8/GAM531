@@ -15,15 +15,15 @@ namespace WindowEngine
 
         private float[] vertices =
         {
-            // Position               // Color
-            -0.25f, -0.25f, -0.25f,   1f, 0f, 0f,  // 0 back bottom left
-             0.25f, -0.25f, -0.25f,   0f, 1f, 0f,  // 1 back bottom right
-             0.25f,  0.25f, -0.25f,   0f, 0f, 1f,  // 2 back top right
-            -0.25f,  0.25f, -0.25f,   1f, 1f, 0f,  // 3 back top left
-            -0.25f, -0.25f,  0.25f,   1f, 0f, 1f,  // 4 front bottom left
-             0.25f, -0.25f,  0.25f,   0f, 1f, 1f,  // 5 front bottom right
-             0.25f,  0.25f,  0.25f,   1f, 1f, 1f,  // 6 front top right
-            -0.25f,  0.25f,  0.25f,   0f, 0f, 0f   // 7 front top left
+            // Position               
+            -0.25f, -0.25f, -0.25f,   1f, 0f, 0f,  // back bottom left
+             0.25f, -0.25f, -0.25f,   0f, 1f, 0f,  // back bottom right
+             0.25f,  0.25f, -0.25f,   0f, 0f, 1f,  // back top right
+            -0.25f,  0.25f, -0.25f,   1f, 1f, 0f,  // back top left
+            -0.25f, -0.25f,  0.25f,   1f, 0f, 1f,  // front bottom left
+             0.25f, -0.25f,  0.25f,   0f, 1f, 1f,  // front bottom right
+             0.25f,  0.25f,  0.25f,   1f, 1f, 1f,  // front top right
+            -0.25f,  0.25f,  0.25f,   0f, 0f, 0f   // front top left
         };
 
         // Indices 
@@ -205,3 +205,4 @@ namespace WindowEngine
 
     }
 }
+
