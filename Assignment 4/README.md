@@ -20,6 +20,9 @@ I changed the vertex shader to now pass the coordinates to the fragment shader.
 
 I used the LoadTexture(string path) function which I got from the example repository to load my jpeg.
 
+    Matrix4 model = Matrix4.CreateRotationX(angle) * Matrix4.CreateRotationY(angle * 0.5f); // rotate cube around X axis and rotates the cube aroud the Y axis at half the speed
+            // Rotates around both the X and Y axis
+
 # How to run
 - Clone or download the repository to your computer
 - Open the solution in Visual Studio
