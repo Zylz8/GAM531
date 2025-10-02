@@ -1,5 +1,6 @@
 ﻿using System;           // Import basic system functionalities like Console, Math, etc.
 using WindowEngine;     // Import the WindowEngine namespace, which contains Game class and other related classes
+using OpenTK.Mathematics;
 
 namespace WindowEngine
 {
@@ -18,4 +19,5 @@ namespace WindowEngine
             } // At this point, the 'game' object is automatically disposed, freeing any resources it used
         }
     }
+
 }
