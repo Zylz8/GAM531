@@ -15,12 +15,6 @@ The project implements vector, matrix, and quaternion operations in C#.
 - Multiplication
 - Identity
 
-Example Output:
-<img width="650" height="458" alt="image" src="https://github.com/user-attachments/assets/4d087b44-0333-4d06-84ab-79d06aeb4c1c" />
-
-
-
-
 
 # How to Run the Project
 
