@@ -12,7 +12,7 @@ namespace WindowEngine
         private int vertexBufferHandle;
 
         private int shaderProgramHandle;
-        private int frameCount = 0;
+        private int count = 0;
 
         public Game(int width, int height)
         {
@@ -101,7 +101,7 @@ namespace WindowEngine
 
         public void Tick()
         {
-            frameCount++;
+            count++;
 
             for (int y = 0; y < screen.height; y++)
             {
@@ -109,7 +109,7 @@ namespace WindowEngine
                 {
                     int r = (int)((x / (float)screen.width) * 255);
                     int g = (int)((y / (float)screen.height) * 255);
-                    int b = (int)((Math.Sin(frameCount * 0.05) + 1) / 2 * 255); // fades 0-255
+                    int b = (int)((Math.Sin(count * 0.05) + 1) / 2 * 255); // fades 0-255
 
                     int index = (y * screen.width + x) * 4;
                     screen.pixels[index + 0] = (byte)b;   // Blue
@@ -172,4 +172,5 @@ namespace WindowEngine
             pixels = new byte[width * height * 4];
         }
     }
+
 }
