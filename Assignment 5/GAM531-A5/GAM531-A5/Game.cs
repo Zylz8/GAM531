@@ -39,37 +39,37 @@ namespace WindowEngine
         // vertices : positions, u,v , normals
         private float[] vertices = {
             // positions       // u , v     // normals
-             // Front face
+             // Front
             -0.5f,-0.5f, 0.5f,  0f,0f,   0f,0f,1f,     
              0.5f,-0.5f, 0.5f,  1f,0f,   0f,0f,1f,     
              0.5f, 0.5f, 0.5f,  1f,1f,   0f,0f,1f,   
             -0.5f, 0.5f, 0.5f,  0f,1f,   0f,0f,1f,   
 
-            // Back face
+            // Back
             -0.5f,-0.5f,-0.5f,  1f,0f,   0f,0f,-1f,    
              0.5f,-0.5f,-0.5f,  0f,0f,   0f,0f,-1f,     
              0.5f, 0.5f,-0.5f,  0f,1f,   0f,0f,-1f,   
             -0.5f, 0.5f,-0.5f,  1f,1f,   0f,0f,-1f, 
 
-            // Left face
+            // Left
             -0.5f,-0.5f,-0.5f,  0f,0f,  -1f,0f,0f,  
             -0.5f,-0.5f, 0.5f,  1f,0f,  -1f,0f,0f,   
             -0.5f, 0.5f, 0.5f,  1f,1f,  -1f,0f,0f,  
             -0.5f, 0.5f,-0.5f,  0f,1f,  -1f,0f,0f,  
 
-            // Right face
+            // Right
              0.5f,-0.5f,-0.5f,  1f,0f,   1f,0f,0f,  
              0.5f,-0.5f, 0.5f,  0f,0f,   1f,0f,0f,  
              0.5f, 0.5f, 0.5f,  0f,1f,   1f,0f,0f,  
              0.5f, 0.5f,-0.5f,  1f,1f,   1f,0f,0f,  
 
-            // Top face
+            // Top
             -0.5f, 0.5f, 0.5f,  0f,0f,   0f,1f,0f,  
              0.5f, 0.5f, 0.5f,  1f,0f,   0f,1f,0f,  
              0.5f, 0.5f,-0.5f,  1f,1f,   0f,1f,0f,  
             -0.5f, 0.5f,-0.5f,  0f,1f,   0f,1f,0f,   
 
-            // Bottom face
+            // Bottom
             -0.5f,-0.5f, 0.5f,  0f,1f,   0f,-1f,0f,  
              0.5f,-0.5f, 0.5f,  1f,1f,   0f,-1f,0f, 
              0.5f,-0.5f,-0.5f,  1f,0f,   0f,-1f,0f,  
@@ -169,19 +169,19 @@ namespace WindowEngine
             GL.ClearColor(1.0f, 0.5f, 0f, 0.5f); // orange back ground
             GL.Enable(EnableCap.DepthTest); // Cube not flat
 
-            // VBO
+            // VBO (Vertex Buffer Object)
             vertexBufferHandle = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferHandle);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
-            // EBO
+            // EBO (Element Buffer Object)
             elementBufferHandle = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferHandle);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(int), indices, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
-            // VAO
+            // VAO (Vertex Array Object)
             vertexArrayHandle = GL.GenVertexArray();
             GL.BindVertexArray(vertexArrayHandle);
 
@@ -191,18 +191,17 @@ namespace WindowEngine
             // position(3) + uv(2) + normal(3 = 8 vertexs
             int vertexNum = 8 * sizeof(float);
 
-            // Position
+            // positions
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, vertexNum, 0);
             GL.EnableVertexAttribArray(0);
 
-            // texture coord
+            // texture coords
             GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, vertexNum, 3 * sizeof(float));
             GL.EnableVertexAttribArray(1);
 
-            // Normal
+            // normal
             GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, vertexNum, 5 * sizeof(float));
             GL.EnableVertexAttribArray(2);
-
 
             // compile the shaders
             int vertexShader = GL.CreateShader(ShaderType.VertexShader);
@@ -383,3 +382,4 @@ namespace WindowEngine
         }
     }
 }
+
