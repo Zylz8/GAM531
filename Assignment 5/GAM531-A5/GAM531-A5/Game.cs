@@ -30,8 +30,8 @@ namespace WindowEngine
         private Vector3 cameraPos = new Vector3(1.5f, 1.5f, 2f);
         private Vector3 cameraFront = -Vector3.UnitZ;
         private Vector3 cameraUp = Vector3.UnitY;
-        private float hori = -90f; // left and right control
-        private float vert = 0f; // up and down control
+        private float yaw = -90f; // left and right control
+        private float pitch = 0f; // up and down control
         private Vector2 lastMousePos;
         private bool firstMouse = true;
 
@@ -272,15 +272,15 @@ namespace WindowEngine
             xoffset *= sensitivity;
             yoffset *= sensitivity;
 
-            hori += xoffset; // left and right control
-            vert += yoffset; // up and down control
+            yaw += xoffset; // left and right control
+            pitch += yoffset; // up and down control
 
             vert = MathHelper.Clamp(vert, -89f, 89f);
             // cameras direction which is forward
             Vector3 front;
-            front.X = MathF.Cos(MathHelper.DegreesToRadians(hori)) * MathF.Cos(MathHelper.DegreesToRadians(vert));
-            front.Y = MathF.Sin(MathHelper.DegreesToRadians(vert));
-            front.Z = MathF.Sin(MathHelper.DegreesToRadians(hori)) * MathF.Cos(MathHelper.DegreesToRadians(vert));
+            front.X = MathF.Cos(MathHelper.DegreesToRadians(yaw)) * MathF.Cos(MathHelper.DegreesToRadians(pitch));
+            front.Y = MathF.Sin(MathHelper.DegreesToRadians(pitch));
+            front.Z = MathF.Sin(MathHelper.DegreesToRadians(yaw)) * MathF.Cos(MathHelper.DegreesToRadians(pitch));
             cameraFront = Vector3.Normalize(front);
             
         }
@@ -382,4 +382,5 @@ namespace WindowEngine
         }
     }
 }
+
 
