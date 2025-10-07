@@ -275,7 +275,7 @@ namespace WindowEngine
             yaw += xoffset; // left and right control
             pitch += yoffset; // up and down control
 
-            vert = MathHelper.Clamp(vert, -89f, 89f);
+            pitch = MathHelper.Clamp(pitch, -89f, 89f);
             // cameras direction which is forward
             Vector3 front;
             front.X = MathF.Cos(MathHelper.DegreesToRadians(yaw)) * MathF.Cos(MathHelper.DegreesToRadians(pitch));
@@ -382,5 +382,6 @@ namespace WindowEngine
         }
     }
 }
+
 
 
