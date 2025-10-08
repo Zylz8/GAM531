@@ -21,17 +21,18 @@ namespace WindowEngine
         private int modelLoc, viewLoc, projLoc;
         private int lightPosLoc, viewPosLoc, lightColorLoc, objectColorLoc;
 
+
         // Light
         private Vector3 lightPos = new Vector3(1.2f, 1.0f, 2.0f); // position of the point light
         private Vector3 lightColor = new Vector3(1.0f, 1.0f, 1.0f); // color of the light
         private Vector3 objectColor = new Vector3(1.0f, 0.5f, 0.31f);
 
         // Camera
-        private Vector3 cameraPos = new Vector3(1.5f, 1.5f, 2f);
+        private Vector3 cameraPos = new Vector3(2.0f, 2.0f, 3.0f);
         private Vector3 cameraFront = -Vector3.UnitZ;
         private Vector3 cameraUp = Vector3.UnitY;
-        private float yaw = -90f; // left and right control
-        private float pitch = 0f; // up and down control
+        private float hori = -90f; // left and right control
+        private float vert = 0f; // up and down control
         private Vector2 lastMousePos;
         private bool firstMouse = true;
 
@@ -39,37 +40,37 @@ namespace WindowEngine
         // vertices : positions, u,v , normals
         private float[] vertices = {
             // positions       // u , v     // normals
-             // Front
+             // Front face
             -0.5f,-0.5f, 0.5f,  0f,0f,   0f,0f,1f,     
              0.5f,-0.5f, 0.5f,  1f,0f,   0f,0f,1f,     
              0.5f, 0.5f, 0.5f,  1f,1f,   0f,0f,1f,   
             -0.5f, 0.5f, 0.5f,  0f,1f,   0f,0f,1f,   
 
-            // Back
+            // Back face
             -0.5f,-0.5f,-0.5f,  1f,0f,   0f,0f,-1f,    
              0.5f,-0.5f,-0.5f,  0f,0f,   0f,0f,-1f,     
              0.5f, 0.5f,-0.5f,  0f,1f,   0f,0f,-1f,   
             -0.5f, 0.5f,-0.5f,  1f,1f,   0f,0f,-1f, 
 
-            // Left
+            // Left face
             -0.5f,-0.5f,-0.5f,  0f,0f,  -1f,0f,0f,  
             -0.5f,-0.5f, 0.5f,  1f,0f,  -1f,0f,0f,   
             -0.5f, 0.5f, 0.5f,  1f,1f,  -1f,0f,0f,  
             -0.5f, 0.5f,-0.5f,  0f,1f,  -1f,0f,0f,  
 
-            // Right
+            // Right face
              0.5f,-0.5f,-0.5f,  1f,0f,   1f,0f,0f,  
              0.5f,-0.5f, 0.5f,  0f,0f,   1f,0f,0f,  
              0.5f, 0.5f, 0.5f,  0f,1f,   1f,0f,0f,  
              0.5f, 0.5f,-0.5f,  1f,1f,   1f,0f,0f,  
 
-            // Top
+            // Top face
             -0.5f, 0.5f, 0.5f,  0f,0f,   0f,1f,0f,  
              0.5f, 0.5f, 0.5f,  1f,0f,   0f,1f,0f,  
              0.5f, 0.5f,-0.5f,  1f,1f,   0f,1f,0f,  
             -0.5f, 0.5f,-0.5f,  0f,1f,   0f,1f,0f,   
 
-            // Bottom
+            // Bottom face
             -0.5f,-0.5f, 0.5f,  0f,1f,   0f,-1f,0f,  
              0.5f,-0.5f, 0.5f,  1f,1f,   0f,-1f,0f, 
              0.5f,-0.5f,-0.5f,  1f,0f,   0f,-1f,0f,  
@@ -169,19 +170,19 @@ namespace WindowEngine
             GL.ClearColor(1.0f, 0.5f, 0f, 0.5f); // orange back ground
             GL.Enable(EnableCap.DepthTest); // Cube not flat
 
-            // VBO (Vertex Buffer Object)
+            // VBO
             vertexBufferHandle = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferHandle);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
-            // EBO (Element Buffer Object)
+            // EBO
             elementBufferHandle = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferHandle);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(int), indices, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
-            // VAO (Vertex Array Object)
+            // VAO
             vertexArrayHandle = GL.GenVertexArray();
             GL.BindVertexArray(vertexArrayHandle);
 
@@ -191,17 +192,18 @@ namespace WindowEngine
             // position(3) + uv(2) + normal(3 = 8 vertexs
             int vertexNum = 8 * sizeof(float);
 
-            // positions
+            // Position
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, vertexNum, 0);
             GL.EnableVertexAttribArray(0);
 
-            // texture coords
+            // texture coord
             GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, vertexNum, 3 * sizeof(float));
             GL.EnableVertexAttribArray(1);
 
-            // normal
+            // Normal
             GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, vertexNum, 5 * sizeof(float));
             GL.EnableVertexAttribArray(2);
+
 
             // compile the shaders
             int vertexShader = GL.CreateShader(ShaderType.VertexShader);
@@ -243,13 +245,14 @@ namespace WindowEngine
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);
-
+            
             float speed = 1.5f * (float)args.Time; // the speed at which the light moves
 
             if (KeyboardState.IsKeyDown(Keys.W)) lightPos.Z -= speed; // w is up
             if (KeyboardState.IsKeyDown(Keys.S)) lightPos.Z += speed; // s is down
             if (KeyboardState.IsKeyDown(Keys.A)) lightPos.X -= speed; // a is left
             if (KeyboardState.IsKeyDown(Keys.D)) lightPos.X += speed; // d is right
+            
 
 
         }
@@ -272,15 +275,15 @@ namespace WindowEngine
             xoffset *= sensitivity;
             yoffset *= sensitivity;
 
-            yaw += xoffset; // left and right control
-            pitch += yoffset; // up and down control
+            hori += xoffset; // left and right control
+            vert += yoffset; // up and down control
 
-            pitch = MathHelper.Clamp(pitch, -89f, 89f);
+            vert = MathHelper.Clamp(vert, -89f, 89f);
             // cameras direction which is forward
             Vector3 front;
-            front.X = MathF.Cos(MathHelper.DegreesToRadians(yaw)) * MathF.Cos(MathHelper.DegreesToRadians(pitch));
-            front.Y = MathF.Sin(MathHelper.DegreesToRadians(pitch));
-            front.Z = MathF.Sin(MathHelper.DegreesToRadians(yaw)) * MathF.Cos(MathHelper.DegreesToRadians(pitch));
+            front.X = MathF.Cos(MathHelper.DegreesToRadians(hori)) * MathF.Cos(MathHelper.DegreesToRadians(vert));
+            front.Y = MathF.Sin(MathHelper.DegreesToRadians(vert));
+            front.Z = MathF.Sin(MathHelper.DegreesToRadians(hori)) * MathF.Cos(MathHelper.DegreesToRadians(vert));
             cameraFront = Vector3.Normalize(front);
             
         }
@@ -296,8 +299,9 @@ namespace WindowEngine
             Matrix4 view = Matrix4.LookAt(cameraPos, cameraPos + cameraFront, cameraUp); // move the camera view with mouse
             Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), Size.X / (float)Size.Y, 0.1f, 100f); // perspective
 
+            // To Make the Cube rotate over time
             float angle = (float)DateTime.Now.TimeOfDay.TotalSeconds;
-            Matrix4 model = Matrix4.CreateRotationX(angle) * Matrix4.CreateRotationY(angle * 0.5f); // rotate cube around X axis and rotates the cube aroud the Y axis at half the speed
+            Matrix4 model = Matrix4.CreateRotationX(angle) * Matrix4.CreateRotationY(angle * 0.1f); // rotate cube around X axis and rotates the cube aroud the Y axis at half the speed
             // Rotates around both the X and Y axis
 
             // send to shader
@@ -382,6 +386,3 @@ namespace WindowEngine
         }
     }
 }
-
-
-
