@@ -11,7 +11,7 @@ namespace WindowEngine
     {
         private readonly float[] _vertices =
         {
-            // vertices for the cub
+            // vertices for the cube
             -0.5f, -0.5f, -0.5f,
              0.5f, -0.5f, -0.5f,
              0.5f,  0.5f, -0.5f,
@@ -108,7 +108,7 @@ namespace WindowEngine
             GL.DeleteBuffer(_vertexBufferObject);
             GL.DeleteBuffer(_elementBufferObject);
             GL.DeleteVertexArray(_vertexArrayObject);
-            //_shader.Dispose();
         }
     }
 }
+
