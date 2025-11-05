@@ -42,7 +42,6 @@ namespace OpenTK_Sprite_Animation
             SetFrame(0, 0); // Start on idle frame
         }
 
-        // Call this from Game.cs to change the state
         public void SetState(CharacterState state, Direction inputDir)
         {
             if (_state == state && inputDir == _lastDirection)
@@ -84,7 +83,7 @@ namespace OpenTK_Sprite_Animation
                     break;
 
                 case CharacterState.Jumping:
-                    SetFrame(0, _lastDirection == Direction.Right ? 0 : 1); // single jump frame
+                    SetFrame(0, _lastDirection == Direction.Right ? 0 : 1);
                     break;
             }
         }
@@ -95,7 +94,6 @@ namespace OpenTK_Sprite_Animation
             GL.DrawArrays(PrimitiveType.TriangleFan, 0, 4);
         }
 
-        // Converts (col,row) in pixels to normalized UVs and uploads to shader
         private void SetFrame(int col, int row)
         {
             float x = (col * TotalW) / SheetW;
@@ -111,4 +109,5 @@ namespace OpenTK_Sprite_Animation
         }
     }
 }
+
 
