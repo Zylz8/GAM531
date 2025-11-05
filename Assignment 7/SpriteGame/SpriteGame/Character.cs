@@ -6,7 +6,7 @@ namespace OpenTK_Sprite_Animation
     // --- Direction input abstraction -----------------------------------------------------------
     public enum Direction { None, Right, Left }
 
-    // --- Character states for FSM -------------------------------------------------------------
+    // --- Character states -------------------------------------------------------------
     public enum CharacterState { Idle, Running, Jumping }
 
     // --- Animator -------------------------------------------------------------------------------
@@ -111,3 +111,4 @@ namespace OpenTK_Sprite_Animation
         }
     }
 }
+
